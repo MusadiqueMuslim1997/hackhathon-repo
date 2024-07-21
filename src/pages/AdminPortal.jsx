@@ -72,14 +72,15 @@ export default function AdminPortal() {
 
           </div>
 
-          </div>
-<div className="notice">
+          <div className="notice">
 
 <div className="both">
 <div className="notice-content"></div>
 <div className="notice-announce">No Notices to Show Right Now</div>
 </div>
 </div>
+          </div>
+
 
           </div>
         </main>
