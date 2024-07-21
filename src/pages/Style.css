@@ -184,5 +184,17 @@
       margin-right: 170px; /* Adjusted for smaller sidebar */
 
     }
+    .admin-main{
+        
+        padding: 0px;
+       
+    }
+    .main-card{
+        justify-content: space-around;
+        padding: 5px;
+    }
+    .admin-card{
+        width: 200px;
+    }
   }
   
