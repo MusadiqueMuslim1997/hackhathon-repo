@@ -36,7 +36,9 @@ export default function AdminPortal() {
         <main className={`admin-main ${isSidebarOpen ? '' : 'full-width'}`}>
           <div className="admin-content">
             <h1>Welcome, Admin</h1>
-            <p>Here you can manage the application settings, users, and more.</p>
+           <div className="main-card"> 
+          <div className="admin-card"></div>
+          </div>
           </div>
         </main>
       </div>
