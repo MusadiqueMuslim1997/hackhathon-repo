@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Home from './pages/Home'; // Correct case
+import AdminPortal from './pages/AdminPortal'; // Correct case
 
 function App() {
   return (
     <>
-      <Home />
+      <AdminPortal/>
     </>
   );
 }
