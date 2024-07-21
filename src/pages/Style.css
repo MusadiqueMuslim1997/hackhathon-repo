@@ -188,10 +188,12 @@
         
         padding: 0px;
        
+       
     }
     .main-card{
         justify-content: space-around;
         padding: 5px;
+        padding-bottom: 80px;
     }
     .admin-card{
         width: 200px;
