@@ -37,7 +37,15 @@ export default function AdminPortal() {
           <div className="admin-content">
             <h1>Welcome, Admin</h1>
            <div className="main-card"> 
-          <div className="admin-card"></div>
+
+          <div className="admin-card">
+           
+           <div className="std-icn"><img className='img' src="./images/img1.png" alt="" /></div>
+           <div className="class-title">Total Students</div>
+           <div className="points">0</div>
+
+          </div>
+
           </div>
           </div>
         </main>
