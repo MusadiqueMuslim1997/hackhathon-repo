@@ -6,7 +6,7 @@ export default function AdminPortal() {
   <>
   <header>
     <div className="title">Admin Dashboard</div>
-    <div className="email"><div className="email-round">Y</div></div>
+    <div className="email">Y</div>
   </header>
   
   </>
