@@ -120,7 +120,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 10px 20px;
     flex-wrap: wrap;
     gap: 40px;
   }
@@ -161,8 +161,8 @@
     font-weight: bolder;
 }
 .img {
-    width: 80%;
-    height: 100px;
+    width: 50%;
+    height: 50px;
 }
   @media (max-width: 550px) {
     header {
