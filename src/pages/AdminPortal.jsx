@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import './Style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes, faTachometerAlt, faCog, faUsers, faFileAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faBars, faTimes, faTachometerAlt, faCog, faUsers, 
+  faFileAlt, faSignOutAlt, faBell, faComment, faUser, 
+  faUserGraduate, faChalkboardTeacher, faBook, faUserTie 
+} from '@fortawesome/free-solid-svg-icons';
 import studentIcon1 from './images/img1.png';
 import studentIcon2 from './images/img3.png';
 import studentIcon3 from './images/img2.png';
@@ -41,10 +45,14 @@ export default function AdminPortal() {
           <aside className="sidebar">
             <nav>
               <ul>
-                <li><a href="#dashboard"><FontAwesomeIcon icon={faTachometerAlt} /> Dashboard</a></li>
-                <li><a href="#settings"><FontAwesomeIcon icon={faCog} /> Settings</a></li>
-                <li><a href="#users"><FontAwesomeIcon icon={faUsers} /> Users</a></li>
-                <li><a href="#reports"><FontAwesomeIcon icon={faFileAlt} /> Reports</a></li>
+                <li><a href="#home"><FontAwesomeIcon icon={faTachometerAlt} /> Home</a></li>
+                <li><a href="#classes"><FontAwesomeIcon icon={faChalkboardTeacher} /> Classes</a></li>
+                <li><a href="#subjects"><FontAwesomeIcon icon={faBook} /> Subjects</a></li>
+                <li><a href="#teachers"><FontAwesomeIcon icon={faUserTie} /> Teachers</a></li>
+                <li><a href="#students"><FontAwesomeIcon icon={faUserGraduate} /> Students</a></li>
+                <li><a href="#notices"><FontAwesomeIcon icon={faBell} /> Notices</a></li>
+                <li><a href="#complains"><FontAwesomeIcon icon={faComment} /> Complains</a></li>
+                <li><a href="#profile"><FontAwesomeIcon icon={faUser} /> Profile</a></li>
                 <li><a href="#logout"><FontAwesomeIcon icon={faSignOutAlt} /> Logout</a></li>
               </ul>
             </nav>
