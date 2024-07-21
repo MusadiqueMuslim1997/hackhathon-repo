@@ -10,6 +10,7 @@ import studentIcon1 from './images/img1.png';
 import studentIcon2 from './images/img3.png';
 import studentIcon3 from './images/img2.png';
 import studentIcon4 from './images/img4.png';
+import logo from './images/logo.png'
 import CourseModal from './CourseModal'; // Import the CourseModal component
 
 export default function AdminPortal() {
