@@ -1,13 +1,11 @@
 import React from 'react';
-import './Style.css'; // Make sure you have this CSS file
+import './Style.css'; // Ensure this file has modal-specific styles
 
-const CourseModal = ({ isOpen, onClose, courses }) => {
-  if (!isOpen) return null;
-
+export default function CourseModal({ isOpen, onClose, courses }) {
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <button className="modal-close" onClick={onClose}>×</button>
+    <div className={`modal-overlay ${isOpen ? 'show' : ''}`} onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose}>&times;</button>
         <h2>Available Courses</h2>
         <ul>
           {courses.map((course, index) => (
@@ -17,6 +15,4 @@ const CourseModal = ({ isOpen, onClose, courses }) => {
       </div>
     </div>
   );
-};
-
-export default CourseModal;
+}
