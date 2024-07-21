@@ -4,7 +4,7 @@ import './Style.css'
 export default function AdminPortal() {
   return (
   <>
-  
+  <header></header>
   
   </>
   )

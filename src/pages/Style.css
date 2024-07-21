@@ -3,7 +3,18 @@
     padding: 0px;
     box-sizing: border-box;
 }
-
+header{
+    width: 100%;
+    padding: 20px 80px;
+    height: 60px;
+    background-color: #0d6db7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
 
 
 
