@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import './Style.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import React, { useState } from 'react';
+import './Style.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes, faTachometerAlt, faCog, faUsers, faFileAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default function AdminPortal() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -24,11 +24,11 @@ export default function AdminPortal() {
           <aside className="sidebar">
             <nav>
               <ul>
-                <li><a href="#dashboard">Dashboard</a></li>
-                <li><a href="#settings">Settings</a></li>
-                <li><a href="#users">Users</a></li>
-                <li><a href="#reports">Reports</a></li>
-                <li><a href="#logout">Logout</a></li>
+                <li><a href="#dashboard"><FontAwesomeIcon icon={faTachometerAlt} /> Dashboard</a></li>
+                <li><a href="#settings"><FontAwesomeIcon icon={faCog} /> Settings</a></li>
+                <li><a href="#users"><FontAwesomeIcon icon={faUsers} /> Users</a></li>
+                <li><a href="#reports"><FontAwesomeIcon icon={faFileAlt} /> Reports</a></li>
+                <li><a href="#logout"><FontAwesomeIcon icon={faSignOutAlt} /> Logout</a></li>
               </ul>
             </nav>
           </aside>
@@ -44,5 +44,5 @@ export default function AdminPortal() {
         <p>Admin Portal &copy; 2024</p>
       </footer>
     </>
-  )
+  );
 }
