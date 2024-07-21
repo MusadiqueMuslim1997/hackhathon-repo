@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faTachometerAlt, faCog, faUsers, faFileAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import studentIcon from './images.jfif'
 
 export default function AdminPortal() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -40,7 +41,7 @@ export default function AdminPortal() {
 
           <div className="admin-card">
            
-           <div className="std-icn"><img className='img' src="./images/img1.png" alt="" /></div>
+           <div className="std-icn"><img className='img' src={studentIcon} alt="s" /></div>
            <div className="class-title">Total Students</div>
            <div className="points">0</div>
 

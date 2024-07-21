@@ -160,8 +160,8 @@
     color: green;
     font-weight: bolder;
 }
-.img > img{
-    width: 100px;
+.img {
+    width: 80%;
     height: 100px;
 }
   @media (max-width: 550px) {
