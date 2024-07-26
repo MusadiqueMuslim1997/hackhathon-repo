@@ -1,16 +1,29 @@
 import React, { useState } from 'react';
-
 import {
   AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, Avatar,
-  Container, Paper, Box, CssBaseline, IconButton, Divider, useMediaQuery, useTheme
-} from '@mui/material';
+  Container, Paper, Box, CssBaseline, IconButton, Divider, useMediaQuery, useTheme, Button
+} from '@mui/material'; // Add Button here
 import {
   Home, Assignment, Assessment, Notifications, Person, Help, ExitToApp, Menu, ChevronLeft
 } from '@mui/icons-material';
 import SubmitAssignment from '../SubmitAssignment';
 
+const AssignmentPreview = ({ onAddAssignment }) => (
+  <Box>
+    <Typography variant="h4">Assignment Preview</Typography>
+    <Paper sx={{ p: 2, mt: 2 }}>
+      <Typography variant="h6">Assignment Title</Typography>
+      <Typography variant="body1">Description of the assignment goes here. This will help you understand what needs to be done.</Typography>
+      <Typography variant="body2" color="textSecondary">Deadline: 2024-08-01</Typography>
+      <Box mt={2}>
+        <Button variant="contained" onClick={onAddAssignment}>Add Assignment</Button>
+      </Box>
+    </Paper>
+  </Box>
+);
+
 export default function MainAssignment() {
-  const [selectedSection, setSelectedSection] = useState('submit-assignment');
+  const [selectedSection, setSelectedSection] = useState('preview');
   const [user] = useState({ name: 'Student Name', profilePic: 'https://via.placeholder.com/150' });
   const [drawerOpen, setDrawerOpen] = useState(false); // Start with sidebar closed on small screens
 
@@ -25,9 +38,10 @@ export default function MainAssignment() {
     switch (selectedSection) {
       case 'submit-assignment':
         return <SubmitAssignment />;
-      // Add cases for other sections as needed
+      case 'preview':
+        return <AssignmentPreview onAddAssignment={() => setSelectedSection('submit-assignment')} />;
       default:
-        return <SubmitAssignment />;
+        return <AssignmentPreview onAddAssignment={() => setSelectedSection('submit-assignment')} />;
     }
   };
 
@@ -75,17 +89,17 @@ export default function MainAssignment() {
         </Box>
         <Divider />
         <List>
+          <ListItem button onClick={() => setSelectedSection('preview')}>
+            <ListItemIcon>
+              <Home />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
           <ListItem button onClick={() => setSelectedSection('submit-assignment')}>
             <ListItemIcon>
               <Assignment />
             </ListItemIcon>
             <ListItemText primary="Submit Assignment" />
-          </ListItem>
-          <ListItem button onClick={() => setSelectedSection('home')}>
-            <ListItemIcon>
-              <Home />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
           </ListItem>
           <ListItem button onClick={() => setSelectedSection('grades-results')}>
             <ListItemIcon>
