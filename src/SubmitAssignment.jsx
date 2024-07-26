@@ -8,7 +8,7 @@ const SubmitAssignment = () => {
   const [link, setLink] = useState('');
   const [submissionType, setSubmissionType] = useState('file'); // file, link, both
   const [status, setStatus] = useState('');
-  const [deadline, setDeadline] = useState('');
+  const [deadline, setDeadline] = useState(''); // This would be set by the teacher
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -46,12 +46,11 @@ const SubmitAssignment = () => {
       />
       <TextField
         label="Deadline Date"
-        type="date"
-        InputLabelProps={{ shrink: true }}
         fullWidth
-        value={deadline}
-        onChange={(e) => setDeadline(e.target.value)}
-        required
+        value={deadline} // Show the deadline set by the teacher
+        InputProps={{
+          readOnly: true, // Make the field read-only
+        }}
       />
       <FormControl component="fieldset">
         <Typography variant="h6">Submission Type</Typography>
