@@ -8,7 +8,7 @@ const SubmitAssignment = () => {
   const [link, setLink] = useState('');
   const [submissionType, setSubmissionType] = useState('file'); // file, link, both
   const [status, setStatus] = useState('');
-  const [deadline, setDeadline] = useState(''); // This would be set by the teacher
+  const [deadline, setDeadline] = useState('2024-08-01'); // This would be set by the teacher
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
