@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { TextField, Button, Typography, Box, IconButton } from '@mui/material';
 import { FileUpload as FileUploadIcon, Link as LinkIcon, Image as ImageIcon } from '@mui/icons-material';
 
-const SubmitAssignment = () => {
+const SubmitAssignment = ({ deadline }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [file, setFile] = useState(null);
   const [link, setLink] = useState('');
   const [submissionType, setSubmissionType] = useState('file'); // file, link, both
   const [status, setStatus] = useState('');
-  const [deadline, setDeadline] = useState(''); // This would be set by the teacher
   const [isSubmitted, setIsSubmitted] = useState(false); // Track submission status
 
   const handleFileChange = (e) => {
@@ -70,7 +69,7 @@ const SubmitAssignment = () => {
       <TextField
         label="Deadline Date"
         fullWidth
-        value={deadline} // Show the deadline set by the teacher
+        value={deadline}
         InputProps={{
           readOnly: true, // Make the field read-only
         }}

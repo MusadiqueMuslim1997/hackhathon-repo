@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
-  AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, Avatar,
-  Container, Paper, Box, CssBaseline, IconButton, Divider, useMediaQuery, useTheme
+  AppBar, Toolbar, Drawer, List, ListItem, ListItemIcon, ListItemText,
+  IconButton, Divider, Box, CssBaseline, Container, Paper, Typography, useMediaQuery, useTheme
 } from '@mui/material';
 import {
   Home, Assignment, Assessment, Notifications, Person, Help, ExitToApp, Menu, ChevronLeft
@@ -12,6 +12,7 @@ import AssignmentPreview from './AssignmentPreview'; // Import the component
 export default function MainAssignment() {
   const [selectedSection, setSelectedSection] = useState('assignment-preview'); // Change to 'assignment-preview' to show preview initially
   const [drawerOpen, setDrawerOpen] = useState(false); // Start with sidebar closed on small screens
+  const [deadline, setDeadline] = useState('2024-08-01'); // Example deadline date
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Check if the screen width is small
@@ -23,7 +24,14 @@ export default function MainAssignment() {
   const renderContent = () => {
     switch (selectedSection) {
       case 'submit-assignment':
-        return <SubmitAssignment />;
+        return (
+          <Box>
+            <Typography variant="h4" gutterBottom>
+              Submit Your Assignment
+            </Typography>
+            <SubmitAssignment deadline={deadline} />
+          </Box>
+        );
       case 'assignment-preview':
         return <AssignmentPreview onAddAssignment={() => setSelectedSection('submit-assignment')} />;
       // Add cases for other sections as needed

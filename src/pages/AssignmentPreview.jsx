@@ -68,10 +68,20 @@ const AssignmentPreview = ({ number, title, description, file, deadline, marks, 
   return (
     <Card sx={{ maxWidth: '100%', margin: 'auto', mt: 3, boxShadow: 3, borderRadius: 2 }}>
       <CardContent>
+        {/* Heading Row */}
+        <Grid container spacing={2} sx={{ mb: 2 }}>
+          <Grid item xs={12}>
+            <Typography variant="h6" component="div">
+              Assignment
+            </Typography>
+          </Grid>
+        </Grid>
+
+        {/* Assignment Data Row */}
         <Grid container spacing={2}>
           {/* Assignment Number Column */}
           <Grid item xs={12} sm={2}>
-            <Typography variant="h6" component="div">
+            <Typography variant="body1">
               {number || 'Assignment #'}
             </Typography>
           </Grid>
@@ -93,7 +103,7 @@ const AssignmentPreview = ({ number, title, description, file, deadline, marks, 
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: '100%',
-                fontSize: '0.8rem', // Adjusted font size
+                fontSize: '0.8rem',
                 textAlign: 'center',
               }}
             >
@@ -113,7 +123,7 @@ const AssignmentPreview = ({ number, title, description, file, deadline, marks, 
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: '100%',
-                fontSize: '0.7rem', // Adjusted font size
+                fontSize: '0.7rem',
                 textAlign: 'center',
               }}
             >
@@ -131,15 +141,15 @@ const AssignmentPreview = ({ number, title, description, file, deadline, marks, 
                 sx={{
                   mb: isSmallScreen ? 1 : 0,
                   mr: isSmallScreen ? 0 : 1,
-                color: 'white',
-                padding: 1,
-                borderRadius: 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100%',
-                fontSize: '0.7rem', // Adjusted font size
-                textAlign: 'center',
+                  color: 'white',
+                  padding: 1,
+                  borderRadius: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '100%',
+                  fontSize: '0.7rem',
+                  textAlign: 'center',
                 }}
               >
                 Add Assignment
