@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Box, FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material';
+import { TextField, Button, Typography, Box, IconButton } from '@mui/material';
+import { FileUpload as FileUploadIcon, Link as LinkIcon, Image as ImageIcon } from '@mui/icons-material';
 
 const SubmitAssignment = () => {
   const [title, setTitle] = useState('');
@@ -8,7 +9,7 @@ const SubmitAssignment = () => {
   const [link, setLink] = useState('');
   const [submissionType, setSubmissionType] = useState('file'); // file, link, both
   const [status, setStatus] = useState('');
-  const [deadline, setDeadline] = useState('2024-08-01'); // This would be set by the teacher
+  const [deadline, setDeadline] = useState(''); // This would be set by the teacher
   const [isSubmitted, setIsSubmitted] = useState(false); // Track submission status
 
   const handleFileChange = (e) => {
@@ -17,7 +18,10 @@ const SubmitAssignment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title && description && ((submissionType === 'file' && file) || (submissionType === 'link' && link) || (submissionType === 'both' && file && link))) {
+    if (title && description &&
+        ((submissionType === 'file' && file) ||
+         (submissionType === 'link' && link) ||
+         (submissionType === 'both' && file && link))) {
       setStatus('Assignment submitted successfully!');
       setIsSubmitted(true);
     } else {
@@ -34,6 +38,10 @@ const SubmitAssignment = () => {
     setSubmissionType('file');
     setStatus('Assignment has been unsubmitted.');
     setIsSubmitted(false);
+  };
+
+  const handleSubmissionTypeChange = (type) => {
+    setSubmissionType(type);
   };
 
   return (
@@ -67,26 +75,46 @@ const SubmitAssignment = () => {
           readOnly: true, // Make the field read-only
         }}
       />
-      <FormControl component="fieldset">
-        <Typography variant="h6">Submission Type</Typography>
-        <RadioGroup
-          value={submissionType}
-          onChange={(e) => setSubmissionType(e.target.value)}
+      <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
+        <IconButton
+          color={submissionType === 'file' ? 'primary' : 'default'}
+          onClick={() => handleSubmissionTypeChange('file')}
           disabled={isSubmitted} // Disable fields if already submitted
         >
-          <FormControlLabel value="file" control={<Radio />} label="File Only" />
-          <FormControlLabel value="link" control={<Radio />} label="Link Only" />
-          <FormControlLabel value="both" control={<Radio />} label="Both File and Link" />
-        </RadioGroup>
-      </FormControl>
+          <FileUploadIcon />
+        </IconButton>
+        <IconButton
+          color={submissionType === 'link' ? 'primary' : 'default'}
+          onClick={() => handleSubmissionTypeChange('link')}
+          disabled={isSubmitted} // Disable fields if already submitted
+        >
+          <LinkIcon />
+        </IconButton>
+        <IconButton
+          color={submissionType === 'both' ? 'primary' : 'default'}
+          onClick={() => handleSubmissionTypeChange('both')}
+          disabled={isSubmitted} // Disable fields if already submitted
+        >
+          <ImageIcon />
+        </IconButton>
+      </Box>
       {submissionType === 'file' || submissionType === 'both' ? (
         <>
-          <Button variant="contained" component="label" disabled={isSubmitted}>
-            Upload File
-            <input type="file" hidden onChange={handleFileChange} />
-          </Button>
+          <IconButton
+            component="label"
+            color="primary"
+            disabled={isSubmitted}
+            sx={{ mt: 2 }}
+          >
+            <FileUploadIcon />
+            <input
+              type="file"
+              hidden
+              onChange={handleFileChange}
+            />
+          </IconButton>
           {file && (
-            <Typography variant="body2">
+            <Typography variant="body2" sx={{ mt: 2 }}>
               {file.name}
             </Typography>
           )}
