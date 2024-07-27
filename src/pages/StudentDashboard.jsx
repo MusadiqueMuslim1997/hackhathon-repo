@@ -3,7 +3,7 @@ import {
   Box, Typography, Container, IconButton, CssBaseline, Select, MenuItem, Button, Grid
 } from '@mui/material';
 import { Menu } from '@mui/icons-material';
-import Sidebar from './SideBar';
+import Sidebar from './Sidebar'; // Import Sidebar component
 import AssignmentPreview from './AssignmentPreview'; // Import the AssignmentPreview component
 import SubmitAssignment from '../SubmitAssignment'; // Import the SubmitAssignment component
 
@@ -17,7 +17,7 @@ export default function StudentDashboard() {
   const [deadline, setDeadline] = useState('2024-08-01'); // Example deadline date
 
   const toggleDrawer = () => {
-    setDrawerOpen(prev => !prev);
+    setDrawerOpen((prev) => !prev);
   };
 
   const handleChange = (setter) => (event) => {
@@ -28,7 +28,7 @@ export default function StudentDashboard() {
     switch (selectedSection) {
       case 'view-assignments':
         return (
-          <AssignmentPreview 
+          <AssignmentPreview
             onAddAssignment={() => setSelectedSection('submit-assignment')}
             deadline={deadline} // Passing deadline as prop to AssignmentPreview
           />
@@ -106,10 +106,10 @@ export default function StudentDashboard() {
                   </Select>
                 </Grid>
                 <Grid item xs={12} sm={4} display="flex" alignItems="center" justifyContent="center">
-                  <Button 
-                    variant="contained" 
-                    color="primary" 
-                    sx={{ height: '56px', py: 1.5 }} 
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    sx={{ height: '56px', py: 1.5 }}
                     fullWidth
                     onClick={() => setSelectedSection('view-assignments')} // Set section to view-assignments
                   >
@@ -126,25 +126,18 @@ export default function StudentDashboard() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <IconButton
-        color="inherit"
-        aria-label="open drawer"
-        edge="start"
-        onClick={toggleDrawer}
-        sx={{ mr: 2, color: 'silver', position: 'fixed', top: 16, left: 16, zIndex: 1201 }}
-      >
-        <Menu />
-      </IconButton>
       <Sidebar drawerOpen={drawerOpen} toggleDrawer={toggleDrawer} setSelectedSection={setSelectedSection} />
       <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}>
         <Container>
-          <Box sx={{ 
-            boxShadow: 3,
-            borderRadius: 2,
-            p: 3,
-            mb: 3,
-            backgroundColor: 'background.paper'
-          }}>
+          <Box
+            sx={{
+              boxShadow: 3,
+              borderRadius: 2,
+              p: 3,
+              mb: 3,
+              backgroundColor: 'background.paper',
+            }}
+          >
             {renderContent()}
           </Box>
         </Container>
