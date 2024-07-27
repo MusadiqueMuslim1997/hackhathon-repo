@@ -1,45 +1,35 @@
 import React from 'react';
 import {
-  Drawer, List, ListItem, ListItemIcon, ListItemText, IconButton, Divider, Box
+  Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, IconButton
 } from '@mui/material';
 import {
-  Assignment, Home, Assessment, Notifications, Person, Help, ExitToApp, Menu, ChevronLeft
+  Home, Assignment, Assessment, Notifications, Person, Help, ExitToApp, ChevronLeft
 } from '@mui/icons-material';
-import { useTheme, useMediaQuery } from '@mui/material';
 
-export default function SideBar({ drawerOpen, toggleDrawer, setSelectedSection }) {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+export default function Sidebar({ drawerOpen, toggleDrawer, setSelectedSection }) {
   return (
     <Drawer
-      variant={isMobile ? 'temporary' : 'permanent'}
+      variant="permanent"
       open={drawerOpen}
-      onClose={toggleDrawer}
       sx={{
         width: 240,
         flexShrink: 0,
         [`& .MuiDrawer-paper`]: {
           width: 240,
           boxSizing: 'border-box',
-          display: isMobile ? (drawerOpen ? 'block' : 'none') : 'block',
         },
       }}
     >
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', padding: 1 }}>
-        {isMobile && (
-          <IconButton onClick={toggleDrawer} sx={{ color: 'silver' }}>
-            <ChevronLeft />
-          </IconButton>
-        )}
-      </Box>
+      <IconButton onClick={toggleDrawer} sx={{ color: 'silver' }}>
+        <ChevronLeft />
+      </IconButton>
       <Divider />
       <List>
-        <ListItem button onClick={() => setSelectedSection('assignment-preview')}>
+        <ListItem button onClick={() => setSelectedSection('view-assignments')}>
           <ListItemIcon>
             <Assignment />
           </ListItemIcon>
-          <ListItemText primary="Assignment Preview" />
+          <ListItemText primary="View Assignments" />
         </ListItem>
         <ListItem button onClick={() => setSelectedSection('submit-assignment')}>
           <ListItemIcon>
@@ -47,37 +37,37 @@ export default function SideBar({ drawerOpen, toggleDrawer, setSelectedSection }
           </ListItemIcon>
           <ListItemText primary="Submit Assignment" />
         </ListItem>
-        <ListItem button onClick={() => setSelectedSection('home')}>
+        <ListItem button>
           <ListItemIcon>
             <Home />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
-        <ListItem button onClick={() => setSelectedSection('grades-results')}>
+        <ListItem button>
           <ListItemIcon>
             <Assessment />
           </ListItemIcon>
           <ListItemText primary="Grades/Results" />
         </ListItem>
-        <ListItem button onClick={() => setSelectedSection('notifications')}>
+        <ListItem button>
           <ListItemIcon>
             <Notifications />
           </ListItemIcon>
           <ListItemText primary="Notifications" />
         </ListItem>
-        <ListItem button onClick={() => setSelectedSection('profile')}>
+        <ListItem button>
           <ListItemIcon>
             <Person />
           </ListItemIcon>
           <ListItemText primary="Profile" />
         </ListItem>
-        <ListItem button onClick={() => setSelectedSection('help-support')}>
+        <ListItem button>
           <ListItemIcon>
             <Help />
           </ListItemIcon>
           <ListItemText primary="Help/Support" />
         </ListItem>
-        <ListItem button onClick={() => setSelectedSection('logout')}>
+        <ListItem button>
           <ListItemIcon>
             <ExitToApp />
           </ListItemIcon>
