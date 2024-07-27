@@ -7,7 +7,7 @@ import {
 } from '@mui/icons-material';
 import { useTheme, useMediaQuery } from '@mui/material';
 
-export default function Sidebar({ drawerOpen, toggleDrawer, setSelectedSection }) {
+export default function SideBar({ drawerOpen, toggleDrawer, setSelectedSection }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 

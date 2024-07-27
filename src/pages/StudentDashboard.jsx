@@ -4,7 +4,7 @@ import {
 } from '@mui/material';
 import { Menu } from '@mui/icons-material';
 import Sidebar from './SideBar';
-import './StudentDashboard.css';
+
 
 export default function StudentDashboard() {
   const [drawerOpen, setDrawerOpen] = useState(false);
