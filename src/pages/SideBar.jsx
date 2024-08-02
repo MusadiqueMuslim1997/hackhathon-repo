@@ -1,29 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, IconButton, useMediaQuery, useTheme
 } from '@mui/material';
 import {
-  Home, Assignment, Assessment, Notifications, Person, Help, ExitToApp, Menu as MenuIcon, ChevronLeft
+  Assignment, Book, Chat, Person, Help, ExitToApp, Menu as MenuIcon, ChevronLeft, Dashboard, MoreVert, Close
 } from '@mui/icons-material';
+import UserProfile from '../components/userprofile/UserProfile'; // Import your UserProfile component
 
-export default function Sidebar({ drawerOpen, toggleDrawer, setSelectedSection }) {
-  const theme = useTheme(); // Access the theme object
+export default function Sidebar({ drawerOpen, toggleDrawer, setSelectedSection, selectedSection }) {
+  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [miniDrawer, setMiniDrawer] = useState(false);
+
+  const handleMiniDrawerToggle = () => {
+    setMiniDrawer(!miniDrawer);
+  };
+
+  const handleSectionChange = (section) => {
+    setSelectedSection(section);
+    console.log('Selected section:', section); // Debugging: Log the selected section
+  };
 
   const drawerContent = (
     <>
-      <IconButton onClick={toggleDrawer} sx={{ color: 'silver' }}>
-        <ChevronLeft />
-      </IconButton>
+      {/* Only show mini drawer toggle button for desktop */}
+      {!isMobile && (
+        <IconButton onClick={handleMiniDrawerToggle} sx={{ color: 'silver' }}>
+          {miniDrawer ? <MoreVert /> : <ChevronLeft />}
+        </IconButton>
+      )}
       <Divider />
-      <List>
-        <ListItem button onClick={() => setSelectedSection('view-assignments')}>
+      <List sx={{ mt: 2 }}>
+        <ListItem button onClick={() => handleSectionChange('Dashboard')}>
+          <ListItemIcon>
+            <Dashboard />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard" />
+        </ListItem>
+        <ListItem button onClick={() => handleSectionChange('view-assignments')}>
           <ListItemIcon>
             <Assignment />
           </ListItemIcon>
           <ListItemText primary="View Assignments" />
         </ListItem>
-        <ListItem button onClick={() => setSelectedSection('submit-assignment')}>
+        <ListItem button onClick={() => handleSectionChange('submit-assignment')}>
           <ListItemIcon>
             <Assignment />
           </ListItemIcon>
@@ -31,39 +51,21 @@ export default function Sidebar({ drawerOpen, toggleDrawer, setSelectedSection }
         </ListItem>
         <ListItem button>
           <ListItemIcon>
-            <Home />
+            <Book />
           </ListItemIcon>
-          <ListItemText primary="Home" />
+          <ListItemText primary="Notes Lectures" />
         </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <Assessment />
-          </ListItemIcon>
-          <ListItemText primary="Grades/Results" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <Notifications />
-          </ListItemIcon>
-          <ListItemText primary="Notifications" />
-        </ListItem>
-        <ListItem button>
+        <ListItem button onClick={() => handleSectionChange('User Profile')}>
           <ListItemIcon>
             <Person />
           </ListItemIcon>
-          <ListItemText primary="Profile" />
+          <ListItemText primary="User Profile" />
         </ListItem>
         <ListItem button>
           <ListItemIcon>
-            <Help />
+            <Chat />
           </ListItemIcon>
-          <ListItemText primary="Help/Support" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <ExitToApp />
-          </ListItemIcon>
-          <ListItemText primary="Logout" />
+          <ListItemText primary="Chat" />
         </ListItem>
       </List>
     </>
@@ -73,14 +75,17 @@ export default function Sidebar({ drawerOpen, toggleDrawer, setSelectedSection }
     <>
       {/* Temporary Drawer for Mobile */}
       <Drawer
-        variant={isMobile ? 'temporary' : 'permanent'}
+        variant='temporary'
         open={drawerOpen}
         onClose={toggleDrawer}
         sx={{
           display: { xs: 'block', sm: 'none' },
           '& .MuiDrawer-paper': {
-            width: 240,
+            width: miniDrawer ? 70 : 240,
             boxSizing: 'border-box',
+            marginTop: '75px', // Adjusted margin top
+            transition: 'width 0.3s',
+            overflowX: 'hidden', // Prevent horizontal scrolling
           },
         }}
       >
@@ -93,11 +98,14 @@ export default function Sidebar({ drawerOpen, toggleDrawer, setSelectedSection }
         open
         sx={{
           display: { xs: 'none', sm: 'block' },
-          width: 240,
+          width: miniDrawer ? 70 : 240,
           flexShrink: 0,
-          [`& .MuiDrawer-paper`]: {
-            width: 240,
+          [& .MuiDrawer-paper]: {
+            width: miniDrawer ? 70 : 240,
             boxSizing: 'border-box',
+            marginTop: '75px', // Adjusted margin top
+            transition: 'width 0.3s',
+            overflowX: 'hidden', // Prevent horizontal scrolling
           },
         }}
       >
@@ -111,10 +119,18 @@ export default function Sidebar({ drawerOpen, toggleDrawer, setSelectedSection }
           aria-label="open drawer"
           edge="start"
           onClick={toggleDrawer}
-          sx={{ mr: 2, color: 'silver', position: 'fixed', top: 16, left: 16, zIndex: 1201 }}
+          sx={{ mt: 1, mr: 2, color: 'silver', position: 'fixed', top: 65, left: 16, zIndex: 1201 }} // Adjusted margin and position
         >
-          <MenuIcon />
+          {drawerOpen ? <Close /> : <MenuIcon />}
         </IconButton>
+      )}
+
+      {/* Conditional rendering of the UserProfile component */}
+      {selectedSection === 'User Profile' && (
+        <div>
+          <p>Selected Section: {selectedSection}</p> {/* Debugging: Display the selected section */}
+          <UserProfile />
+        </div>
       )}
     </>
   );

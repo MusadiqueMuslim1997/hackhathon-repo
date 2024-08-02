@@ -1,11 +1,13 @@
 import React from 'react';
-import StudentDashboard from './pages/StudentDashboard';
+// import Notes from './pages/Notes';
+import AssignmentMarks from './pages/AssignmentMarks';
 
 
 const App = () => {
   return (
     <>
-      <StudentDashboard />
+      {/* <Notes /> */}
+      <AssignmentMarks />
     </>
   );
 };

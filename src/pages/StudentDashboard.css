@@ -1,22 +1,19 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+.dashboard{
+    margin-top: 100px;
 }
 
-.boxes{
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+.boxshadow,.boxshadow2{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 40px;
 }
-.selectCpurse{
-    width: 100%;
+
+.boxshadow1{
+    margin-top: 100px;
 }
-.selectBatch{
-    width: 100%;
-}
+
+@media (max-width:550px){
+     .boxshadow{
+    padding: 20px;
+    }
+    
+    }
